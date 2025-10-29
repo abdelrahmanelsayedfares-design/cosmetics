@@ -5,14 +5,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../core/ui/app_check_out.dart';
 import '../core/ui/app_text_check_out.dart';
 
-class CheckOutView extends StatefulWidget {
-  const CheckOutView({super.key});
+class Test extends StatefulWidget {
+  const Test({super.key});
 
   @override
-  State<CheckOutView> createState() => _CheckOutViewState();
+  State<Test> createState() => _TestState();
 }
 
-class _CheckOutViewState extends State<CheckOutView> {
+class _TestState extends State<Test> {
   List<Marker> Markes = [
     Marker(markerId: MarkerId('1'), position: LatLng(31.048724, 31.389697)),
   ];
@@ -84,7 +84,7 @@ class _CheckOutViewState extends State<CheckOutView> {
                 AppCheckOut(
                   image: AppImage(
                     image:
-                    'https://ahlinformatica.com/wp-content/uploads/2021/06/mc-1-1536x937.png',
+                        'https://ahlinformatica.com/wp-content/uploads/2021/06/mc-1-1536x937.png',
                   ),
                   imageHeight: 20.h,
                   imageWidth: 30.w,

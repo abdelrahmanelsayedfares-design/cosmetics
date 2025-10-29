@@ -11,8 +11,13 @@ class ListViewCart extends StatefulWidget {
 }
 
 class _ListViewCartState extends State<ListViewCart> {
+  late List<int> quantities;
+  @override
+  void initState() {
+    super.initState();
+    quantities = List<int>.filled(itemCart.length, 1);
+  }
 
-  int current = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -94,9 +99,10 @@ class _ListViewCartState extends State<ListViewCart> {
                           children: [
                             IconButton(
                               onPressed: () {
-                                if (current > 1) {
-                                  current--;
-                                  setState(() {});
+                                if (quantities[index]>1) {
+                                  setState(() {
+                                    quantities[index]--;
+                                  });
                                 }
                               },
                               icon: AppImage(
@@ -105,7 +111,7 @@ class _ListViewCartState extends State<ListViewCart> {
                               ),
                             ),
                             Text(
-                              '$current',
+                              '${quantities[index]}',
                               style: TextStyle(
                                 color: Color(0xff434C6D),
                                 fontWeight: FontWeight.w500,
@@ -114,8 +120,9 @@ class _ListViewCartState extends State<ListViewCart> {
                             ),
                             IconButton(
                               onPressed: () {
-                                current++;
-                                setState(() {});
+                                setState(() {
+                                  quantities[index]++;
+                                });
                               },
                               icon: AppImage(
                                 image: 'plus.svg',

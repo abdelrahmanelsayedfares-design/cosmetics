@@ -2,7 +2,6 @@ import 'package:cosmetics/views/home/pages/categories.dart';
 import 'package:cosmetics/views/home/pages/my_cart.dart';
 import 'package:cosmetics/views/home/pages/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../../core/ui/app_images.dart';
 import 'pages/home.dart';
 
@@ -21,12 +20,12 @@ class _HomeViewsState extends State<HomeViews> {
     _Model(icon: 'profile.svg', page: ProfilePage()),
   ];
 
-  int Current=0;
+  int Current = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         decoration: BoxDecoration(
@@ -60,7 +59,10 @@ class _HomeViewsState extends State<HomeViews> {
           items: List.generate(
             list.length,
             (index) => BottomNavigationBarItem(
-              icon:AppImage(image:list[index].icon,color:Current==index?Color(0xffDA498C):null),
+              icon: AppImage(
+                image: list[index].icon,
+                color: Current == index ? Color(0xffDA498C) : null,
+              ),
               label: '',
             ),
           ),
