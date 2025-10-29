@@ -1,5 +1,12 @@
-import 'package:cosmetics/views/home/views.dart';
+import 'package:cosmetics/views/auth/creat_password.dart';
+import 'package:cosmetics/views/auth/login.dart';
+import 'package:cosmetics/views/auth/forget_password.dart';
+import 'package:cosmetics/views/splach.dart';
+import 'package:cosmetics/views/test.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'core/logic/helper_methods.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,29 +17,86 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          titleTextStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-            color: Color(0xff434C6D),
+    return ScreenUtilInit(
+      designSize: Size(390, 844),
+      minTextAdapt: true,
+      // splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          navigatorKey: navigatorKey,
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            scaffoldBackgroundColor: Color(0xffD9D9D9),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xffD75D72),
+                minimumSize: Size(268.w, 65.h),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(60.r),
+                ),
+              ),
+            ),
+            textTheme: TextTheme(
+              labelSmall:TextStyle(
+                color: Color(0xff434C6D),
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+              ),
+              displaySmall: TextStyle(
+                color: Color(0xff434C6D),
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+              ),
+              bodySmall: TextStyle(
+                color: Color(0xff8E8EA9),
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
+              bodyLarge: TextStyle(
+                color: Color(0xff434C6D),
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
+              labelMedium: TextStyle(
+                color: Color(0xff434C6D),
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+              bodyMedium: TextStyle(
+                color: Color(0xff434C6D),
+                fontWeight: FontWeight.bold,
+                fontSize: 24.sp,
+              ),
+            ),
+            appBarTheme: AppBarTheme(
+              titleTextStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24.sp,
+                color: Color(0xff434C6D),
+              ),
+              surfaceTintColor: Colors.transparent,
+              backgroundColor: Color(0xffD9D9D9),
+            ),
+            fontFamily: 'Montserrat',
+            inputDecorationTheme: InputDecorationTheme(
+              labelStyle: TextStyle(color: Color(0xff8E8EA9),
+              fontSize: 18,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide(color: Color(0xffB3B3C1)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide(color: Color(0xffB3B3C1)),
+              ),
+            ),
           ),
-          surfaceTintColor: Colors.transparent,
-          backgroundColor: Color(0xffD9D9D9),
-        ),
-        fontFamily: 'Montserrat',
-        inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25)
-          ),
-        ),
-        scaffoldBackgroundColor: Color(0xffD9D9D9),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: HomeViews(),
+          home: SplachView(),
+        );
+      },
     );
   }
 }
+
