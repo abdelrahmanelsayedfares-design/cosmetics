@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../logic/item_cart.dart';
+import '../../model/item_cart.dart';
 import 'app_images.dart';
 
 class ListViewCart extends StatefulWidget {

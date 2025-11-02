@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'app_images.dart';
-import '../logic/item_image_crd.dart';
+import '../../model/item_image_crd.dart';
 
 class GridVieww extends StatelessWidget {
   const GridVieww({super.key});

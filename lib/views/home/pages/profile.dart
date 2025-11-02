@@ -2,7 +2,7 @@ import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/logic/items_profile.dart';
+import '../../../model/item_profile.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

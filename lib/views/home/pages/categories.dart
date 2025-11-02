@@ -2,7 +2,7 @@ import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/logic/item_cateories.dart';
+import '../../../model/item_cateories.dart';
 import '../../../core/ui/app_input.dart';
 
 class CategoriesPage extends StatelessWidget {
