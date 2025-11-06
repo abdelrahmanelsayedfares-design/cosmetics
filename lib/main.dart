@@ -1,7 +1,6 @@
 import 'package:cosmetics/views/auth/creat_password.dart';
 import 'package:cosmetics/views/auth/login.dart';
 import 'package:cosmetics/views/auth/forget_password.dart';
-import 'package:cosmetics/views/auth/verify_code.dart';
 import 'package:cosmetics/views/splach.dart';
 import 'package:cosmetics/views/test.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +93,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: VerifyCodeView(),
+          home: SplachView(),
         );
       },
     );
