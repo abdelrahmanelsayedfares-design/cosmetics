@@ -45,3 +45,12 @@ For example:
 ---
 
 > ✨ *Developed with Flutter ❤️ by Abdelrahman Elsayed*
+> ## 📱 Download the App (APK)
+You can download and install the app on your Android device from the link below:
+
+👉 [Download APK from Google Drive](https://drive.google.com/file/d/1BuWdAW7zPJofMuXiPRrXtlvMILVSg5eE/view?usp=drive_link)
+## 🎥 App Demo Video
+Watch a short demo of the app in action below 👇
+
+🎬 [Watch Demo Video on Google Drive](https://drive.google.com/file/d/1kn0NlbN1Ne2k6mshT1WPthtox2pj09kz/view?usp=drive_link)
+
