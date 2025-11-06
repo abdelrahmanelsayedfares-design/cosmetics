@@ -29,7 +29,7 @@ For example:
 
 ## 👨‍💻 Developer
 **Abdelrahman Elsayed Fares**  
-📧 [abdelrahmanelsayedfares@gmail.com](mailto:abdelrahmanelsayedfares@gmail.com)  
+📧 [abdelrahmanelsayedfares@gmail.com](mailto:abdelrahmanelsayedfares@gmail.com?subject=Regarding%20your%20Flutter%20app)
 🌐 [GitHub Profile](https://github.com/abdelrahmanelsayedfares-design)
 
 ---

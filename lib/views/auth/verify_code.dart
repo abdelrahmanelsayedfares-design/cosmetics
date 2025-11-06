@@ -1,6 +1,7 @@
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/views/home/views.dart';
-import 'package:flutter/material.dart' hide Dialog;
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../core/ui/app_images.dart';
@@ -11,8 +12,9 @@ import 'creat_password.dart';
 
 class VerifyCodeView extends StatelessWidget {
   final bool isFromForgotPassword;
+  final CountDownController _controller = CountDownController();
 
-  const VerifyCodeView({super.key, this.isFromForgotPassword = false});
+   VerifyCodeView({super.key, this.isFromForgotPassword = false});
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +61,8 @@ class VerifyCodeView extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: TextButton(
-                    onPressed: (){
-                      goTo(CreatAccountView(),canPop: false);
+                    onPressed: () {
+                      goTo(CreatAccountView(), canPop: false);
                     },
                     child: Text(
                       'Edit the number',
@@ -128,22 +130,43 @@ class VerifyCodeView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Text(
-                      '0:36',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff8E8EA9),
-                      ),
+                    CircularCountDownTimer(
+                      duration: 60,
+                      initialDuration: 0,
+                      controller: _controller,
+                      width: 0,
+                      height: 0,
+                      ringColor: Colors.transparent,
+                      fillColor: Colors.transparent,
+                      backgroundColor: Colors.transparent,
+                      strokeWidth: 0,
+                      isTimerTextShown: false,
+                      isReverse: true,
+                    ),
+                    StreamBuilder<int>(
+                      stream: Stream.periodic(const Duration(seconds: 1), (i) => i).take(61),
+                      builder: (context, snapshot) {
+                        int remaining = 60 - (snapshot.data ?? 0);
+                        String formatted =
+                            "0:${remaining.toString().padLeft(2, '0')}";
+                        return Text(
+                          formatted,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff8E8EA9),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
                 SizedBox(height: 113),
                 AppButtom(
                   text: 'Done',
-                  onPressed: (){
+                  onPressed: () {
                     if (isFromForgotPassword) {
-                     goTo(CreatPasswordView(),canPop: false);
+                      goTo(CreatPasswordView(), canPop: false);
                     } else {
                       showDialog(
                         context: context,
@@ -152,7 +175,6 @@ class VerifyCodeView extends StatelessWidget {
                         },
                       );
                     }
-
                   },
                 ),
               ],
@@ -163,4 +185,3 @@ class VerifyCodeView extends StatelessWidget {
     );
   }
 }
-
