@@ -24,9 +24,6 @@ You can download and install the app directly on your Android device:
 ## 🧠 Technologies Used
 - **Flutter**
 - **Dart**
-- **SQLite** for local data storage
-- **Provider / GetX** for state management
-
 ---
 
 ## 📸 Screenshots
