@@ -14,13 +14,6 @@ Developed using **Flutter** and **Dart**, with a user-friendly interface and smo
 
 ---
 
-## 📱 Download the App (APK)
-You can download and install the app directly on your Android device:
-
-👉 [Download APK](./build/app/outputs/flutter-apk/app-release.apk)
-
----
-
 ## 🧠 Technologies Used
 - **Flutter**
 - **Dart**
