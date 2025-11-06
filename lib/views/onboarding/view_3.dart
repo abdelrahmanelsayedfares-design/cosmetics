@@ -39,6 +39,9 @@ class OnBoardingThree extends StatelessWidget {
             ),
             SizedBox(height: 30.h),
             AppButtom(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xff434C6D),
+              ),
               text: 'let’s start!',
               onPressed: () {
               goTo(LoginView(),canPop: false);
