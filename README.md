@@ -45,7 +45,7 @@ For example:
 ## 📱 Download the App (APK)
 You can download and install the app directly on your Android device:
 
-👉 [Download APK (Direct Link)](https://drive.google.com/uc?export=download&id=1BuWdAW7zPJofMuXiPRrXtlvMILVSg5eE)
+👉 [Download APK ](https://drive.google.com/uc?export=download&id=1BuWdAW7zPJofMuXiPRrXtlvMILVSg5eE)
 
 ## 🎥 App Demo Video
 Watch a short demo of the app below 👇
