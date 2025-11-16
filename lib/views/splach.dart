@@ -1,7 +1,6 @@
-import 'dart:async';
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_images.dart';
-import 'package:cosmetics/views/onboarding/view_1.dart';
+import 'package:cosmetics/views/on_boarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +16,7 @@ class _SplachViewState extends State<SplachView> {
   @override
   void initState() {
     super.initState();
-    goTo(OnBoardingOne(),canPop: false,delayInSeconds: 3);
+    goTo(OnBoardingView(),canPop: false,delayInSeconds: 3);
 
   }
 
@@ -27,9 +26,9 @@ class _SplachViewState extends State<SplachView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppImage(image: 'creeat_account.svg', width: 200.w, height: 200.h),
+            AppImage(image: 'splash_image1.png', width: 200.w, height: 200.h),
             SizedBox(height: 16.h,),
-            AppImage(image: 'splach_2.svg',width: 120.w,
+            AppImage(image: 'splash_image2.png',width: 120.w,
               height: 46.h,),
           ],
         ),

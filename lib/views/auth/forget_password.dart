@@ -20,7 +20,7 @@ class ForgetPasswordView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(16.r).copyWith(top: 48.r),
                 child: AppImage(
-                  image: 'creeat_account.svg',
+                  image: 'splash_image1.png',
                   width: 67,
                   height: 62,
                 ),

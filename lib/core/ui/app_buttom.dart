@@ -6,13 +6,14 @@ class AppButtom extends StatelessWidget {
 
   final String text;
   final VoidCallback? onPressed ;
-  final ButtonStyle? style;
-  const AppButtom({super.key, required this.text,required this.onPressed, this.style,});
+  final Color? color;
+  const AppButtom({super.key, required this.text,required this.onPressed, this.color, });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: style,
+      style: ElevatedButton.styleFrom(
+        backgroundColor:color,) ,
       onPressed: onPressed,
       child: Text(
         text,

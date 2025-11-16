@@ -40,7 +40,7 @@ flutter:
     - assets/images/
     - assets/svg/
     - assets/looties/
-    - assets/svg/icons/
+    - assets/icons/
 
 
   fonts:

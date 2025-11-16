@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/ui/app_buttom.dart';
 import '../../core/ui/app_input.dart';
-import '../onboarding/view_1.dart';
+import '../on_boarding.dart';
 import 'forget_password.dart';
 
 class LoginView extends StatelessWidget {

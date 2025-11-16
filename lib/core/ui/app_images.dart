@@ -22,12 +22,21 @@ class AppImage extends StatelessWidget {
   Widget build(BuildContext context) {
     if (image.toLowerCase().endsWith('.svg')) {
       return SvgPicture.asset(
+        'assets/icons/$image',
+        width: width,
+        height: height,
+        color: color,
+        fit: fit ?? BoxFit.scaleDown,
+      );
+    }else if(image.toLowerCase().endsWith('.svg')){
+      return SvgPicture.asset(
         'assets/svg/$image',
         width: width,
         height: height,
         color: color,
         fit: fit ?? BoxFit.scaleDown,
       );
+
     } else if (image.startsWith('http')) {
       return Image.network(
         image,

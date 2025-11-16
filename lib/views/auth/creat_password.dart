@@ -20,7 +20,7 @@ class CreatPasswordView extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 94).r,
                 child: Center(
                   child: AppImage(
-                    image: 'creeat_account.svg',
+                    image: 'splash_image1.png',
                     width: 67.w,
                     height: 62.h,
                   ),

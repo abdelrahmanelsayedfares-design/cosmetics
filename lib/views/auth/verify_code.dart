@@ -26,7 +26,7 @@ class VerifyCodeView extends StatelessWidget {
             child: Column(
               children: [
                 AppImage(
-                  image: 'creeat_account.svg',
+                  image: 'splash_image1.png',
                   width: 67.w,
                   height: 62.h,
                 ),

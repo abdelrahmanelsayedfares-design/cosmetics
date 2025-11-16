@@ -1,6 +1,7 @@
 import 'package:cosmetics/views/auth/creat_password.dart';
 import 'package:cosmetics/views/auth/login.dart';
 import 'package:cosmetics/views/auth/forget_password.dart';
+import 'package:cosmetics/views/on_boarding.dart';
 import 'package:cosmetics/views/splach.dart';
 import 'package:cosmetics/views/test.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,15 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
+            floatingActionButtonTheme: FloatingActionButtonThemeData(
+              backgroundColor: Color(0xff434C6D),
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style:TextButton.styleFrom(
+                  foregroundColor: Color(0xff434C6D),// The color is from above
+                  // textStyle: TextStyle(color: Color(0xff434C6D), ),
+              ),
+            ),
             scaffoldBackgroundColor: Color(0xffD9D9D9),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
