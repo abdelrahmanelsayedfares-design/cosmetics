@@ -73,11 +73,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             ),
             AppImage(image: currentModel.image),
             SizedBox(height: 27.92.h),
-            Center(
-              child: Text(
-                currentModel.text,
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
+            Text(
+              currentModel.text,
+              style: Theme.of(context).textTheme.labelMedium,
+              textAlign: TextAlign.center,
             ),
             SizedBox(height: 10.h),
             Text(
