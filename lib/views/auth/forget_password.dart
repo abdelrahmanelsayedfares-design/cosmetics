@@ -1,8 +1,10 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/views/auth/login.dart';
 import 'package:cosmetics/views/auth/verify_code.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../core/ui/app_back.dart';
 import '../../core/ui/app_buttom.dart';
 import '../../core/ui/app_input.dart';
 
@@ -17,6 +19,12 @@ class ForgetPasswordView extends StatelessWidget {
           physics: AlwaysScrollableScrollPhysics(),
           child: Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 16).r,
+                child: AppBack(onTap: (){
+                  goTo(LoginView(),canPop: false);
+                },),
+              ),
               Padding(
                 padding: EdgeInsets.all(16.r).copyWith(top: 48.r),
                 child: AppImage(
@@ -54,7 +62,7 @@ class ForgetPasswordView extends StatelessWidget {
               AppButtom(
                 text: 'Next',
                 onPressed: () {
-                goTo(VerifyCodeView(isFromForgotPassword: true),canPop:false );
+                goTo(VerifyCodeView(isFromForgotPassword: true),canPop:true );
                 },
               ),
             ],

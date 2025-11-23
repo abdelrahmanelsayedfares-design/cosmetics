@@ -43,6 +43,6 @@ You can download and install the app directly on your Android device:
 ## 🎥 App Demo Video
 Watch a short demo of the app below 👇
 
-[![Watch the video](https://img.youtube.com/vi/QOdCgU7IQoI/0.jpg)](https://www.youtube.com/watch?v=QOdCgU7IQoI)
+[![Watch the video](https://img.youtube.com/vi/QOdCgU7IQoI/0.jpg)](https://www.youtube.com/shorts/QMcOjRVfef8)
 
 

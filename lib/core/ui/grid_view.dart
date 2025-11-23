@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_images.dart';
 import '../../model/item_image_crd.dart';
 
@@ -31,43 +32,40 @@ class GridVieww extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0).r,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
-                  child: Stack(
-                    children: [
-                      AppImage(image: Item_Image_Card[index].image),
-                      Positioned(
-                        top: 14,
-                        right: 14,
-                        child: InkWell(
-                          onTap: () {},
-                          child: Container(
-                            width: 32,
-                            height: 32,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadiusGeometry.circular(8),
-                              color: Color(0xffFFFAFA),
-                            ),
-                            child: Center(
-                              child: AppImage(
-                                image: 'Vector.svg',
-                                width: 16,
-                                height: 16,
-                              ),
+                child: Stack(
+                  alignment: AlignmentDirectional.topEnd,
+                  children: [
+                    AppImage(image: Item_Image_Card[index].image),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 6,right: 6).r,
+                      child: InkWell(
+                        onTap: (){},
+                        child: Container(
+                          width: 32.w,
+                          height: 32.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadiusGeometry.circular(8),
+                            color: Color(0xffFFFAFA),
+                          ),
+                          child: Center(
+                            child: AppImage(
+                              image: 'Vector.svg',
+                              width: 16,
+                              height: 16,
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 11),
+              SizedBox(height: 11.h),
               Text(
                 Item_Image_Card[index].terxt,
                 style: TextStyle(
@@ -76,12 +74,12 @@ class GridVieww extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 11),
+              SizedBox(height: 11.h),
               Text(
                 Item_Image_Card[index].price,
                 style: TextStyle(
                   color: Color(0xff70839C),
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),

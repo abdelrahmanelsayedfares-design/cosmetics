@@ -1,9 +1,11 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:cosmetics/core/logic/helper_methods.dart';
+import 'package:cosmetics/views/auth/forget_password.dart';
 import 'package:cosmetics/views/home/views.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import '../../core/ui/app_back.dart';
 import '../../core/ui/app_images.dart';
 import '../../core/ui/app_buttom.dart';
 import 'creat_account.dart';
@@ -25,6 +27,9 @@ class VerifyCodeView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40).r,
             child: Column(
               children: [
+                AppBack(onTap: (){
+                  goTo(ForgetPasswordView(),canPop: false);
+                },),
                 AppImage(
                   image: 'splash_image1.png',
                   width: 67.w,

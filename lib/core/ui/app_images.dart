@@ -37,15 +37,33 @@ class AppImage extends StatelessWidget {
         fit: fit ?? BoxFit.scaleDown,
       );
 
-    } else if (image.startsWith('http')) {
+    }else if (image.startsWith('http')) {
       return Image.network(
         image,
         width: width,
         height: height,
-        color: color,
         fit: fit ?? BoxFit.cover,
+        color: color,
+
+        // لودينج أثناء تحميل الصورة
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return Center(
+            child: SizedBox(
+              width: 40,
+              height: 40,
+              child: CircularProgressIndicator(),
+            ),
+          );
+        },
+        errorBuilder: (context, error, stackTrace) {
+          return Center(
+            child: Icon(Icons.broken_image, size: 40, color: Colors.grey),
+          );
+        },
       );
-    }  else if(image.toLowerCase().endsWith('json')){
+    }
+    else if(image.toLowerCase().endsWith('json')){
 
       return Lottie.asset('assets/looties/$image',
         width: width,
