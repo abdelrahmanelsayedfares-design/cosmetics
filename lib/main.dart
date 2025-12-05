@@ -1,9 +1,9 @@
 import 'package:cosmetics/views/auth/creat_password.dart';
 import 'package:cosmetics/views/auth/login.dart';
 import 'package:cosmetics/views/auth/forget_password.dart';
+import 'package:cosmetics/views/check_out.dart';
 import 'package:cosmetics/views/on_boarding.dart';
 import 'package:cosmetics/views/splach.dart';
-import 'package:cosmetics/views/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
               backgroundColor: Color(0xff434C6D),
             ),
             textButtonTheme: TextButtonThemeData(
-              style:TextButton.styleFrom(
-                  foregroundColor: Color(0xff434C6D),// The color is from above
-                  // textStyle: TextStyle(color: Color(0xff434C6D), ),
+              style: TextButton.styleFrom(
+                foregroundColor: Color(0xff434C6D), // The color is from above
+                // textStyle: TextStyle(color: Color(0xff434C6D), ),
               ),
             ),
             scaffoldBackgroundColor: Color(0xffD9D9D9),
@@ -49,15 +49,10 @@ class MyApp extends StatelessWidget {
               ),
             ),
             textTheme: TextTheme(
-              labelSmall:TextStyle(
+              labelSmall: TextStyle(
                 color: Color(0xff434C6D),
                 fontSize: 12,
                 fontWeight: FontWeight.w400,
-              ),
-              displaySmall: TextStyle(
-                color: Color(0xff434C6D),
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
               ),
               bodySmall: TextStyle(
                 color: Color(0xff8E8EA9),
@@ -91,9 +86,7 @@ class MyApp extends StatelessWidget {
             ),
             fontFamily: 'Montserrat',
             inputDecorationTheme: InputDecorationTheme(
-              labelStyle: TextStyle(color: Color(0xff8E8EA9),
-              fontSize: 18,
-              ),
+              labelStyle: TextStyle(color: Color(0xff8E8EA9), fontSize: 18),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide(color: Color(0xffB3B3C1)),
@@ -104,10 +97,9 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: SplachView(),
+          home: CheckOutView(),
         );
       },
     );
   }
 }
-

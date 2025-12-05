@@ -21,9 +21,7 @@ class ForgetPasswordView extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 16).r,
-                child: AppBack(onTap: (){
-                  goTo(LoginView(),canPop: false);
-                },),
+                child: AppBack(),
               ),
               Padding(
                 padding: EdgeInsets.all(16.r).copyWith(top: 48.r),

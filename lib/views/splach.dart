@@ -3,7 +3,7 @@ import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:cosmetics/views/on_boarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:animate_do/animate_do.dart';
 
 class SplachView extends StatefulWidget {
   const SplachView({super.key});
@@ -26,7 +26,9 @@ class _SplachViewState extends State<SplachView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppImage(image: 'splash_image1.png', width: 200.w, height: 200.h),
+            SpinPerfect(
+                duration: Duration(seconds: 2),
+                child: AppImage(image: 'splash_image1.png', width: 200.w, height: 200.h)),
             SizedBox(height: 16.h,),
             AppImage(image: 'splash_image2.png',width: 120.w,
               height: 46.h,),

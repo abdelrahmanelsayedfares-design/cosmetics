@@ -27,9 +27,7 @@ class VerifyCodeView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40).r,
             child: Column(
               children: [
-                AppBack(onTap: (){
-                  goTo(ForgetPasswordView(),canPop: false);
-                },),
+                AppBack(),
                 AppImage(
                   image: 'splash_image1.png',
                   width: 67.w,

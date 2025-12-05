@@ -107,8 +107,8 @@ class _AppInputState extends State<AppInput> {
                         },
                         icon: AppImage(
                           image: _obscureText
-                              ? 'eye_close.svg'
-                              : 'eye_open.svg',
+                              ? 'password_off.svg'
+                              : 'password_on.svg',
                           width: 22,
                           height: 19.15,
                         ),

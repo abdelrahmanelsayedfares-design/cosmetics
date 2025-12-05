@@ -54,7 +54,7 @@ class GridVieww extends StatelessWidget {
                           ),
                           child: Center(
                             child: AppImage(
-                              image: 'Vector.svg',
+                              image: 'market.svg',
                               width: 16,
                               height: 16,
                             ),

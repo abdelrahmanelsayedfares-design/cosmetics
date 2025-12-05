@@ -7,6 +7,7 @@ class AppImage extends StatelessWidget {
   final double? height;
   final double? width;
   final Color? color;
+  final bool isCircle;
   final BoxFit? fit;
 
   const AppImage({
@@ -14,41 +15,34 @@ class AppImage extends StatelessWidget {
     required this.image,
     this.height,
     this.width,
+    this.isCircle = false,
     this.color,
     this.fit,
   });
 
   @override
   Widget build(BuildContext context) {
+    Widget child;
+    if (image.isEmpty) return SizedBox.shrink();
     if (image.toLowerCase().endsWith('.svg')) {
-      return SvgPicture.asset(
+      child = SvgPicture.asset(
         'assets/icons/$image',
         width: width,
         height: height,
         color: color,
         fit: fit ?? BoxFit.scaleDown,
       );
-    }else if(image.toLowerCase().endsWith('.svg')){
-      return SvgPicture.asset(
-        'assets/svg/$image',
-        width: width,
-        height: height,
-        color: color,
-        fit: fit ?? BoxFit.scaleDown,
-      );
-
-    }else if (image.startsWith('http')) {
-      return Image.network(
+    } else if (image.startsWith('http')) {
+      child = Image.network(
         image,
         width: width,
         height: height,
         fit: fit ?? BoxFit.cover,
         color: color,
 
-        // لودينج أثناء تحميل الصورة
         loadingBuilder: (context, child, loadingProgress) {
           if (loadingProgress == null) return child;
-          return Center(
+          return const Center(
             child: SizedBox(
               width: 40,
               height: 40,
@@ -56,25 +50,16 @@ class AppImage extends StatelessWidget {
             ),
           );
         },
-        errorBuilder: (context, error, stackTrace) {
-          return Center(
-            child: Icon(Icons.broken_image, size: 40, color: Colors.grey),
-          );
-        },
       );
-    }
-    else if(image.toLowerCase().endsWith('json')){
-
-      return Lottie.asset('assets/looties/$image',
+    } else if (image.toLowerCase().endsWith('.json')) {
+      child = Lottie.asset(
+        'assets/looties/$image',
         width: width,
         height: height,
         fit: fit ?? BoxFit.cover,
-
       );
-    }
-
-    else {
-      return Image.asset(
+    } else {
+      child = Image.asset(
         'assets/images/$image',
         width: width,
         height: height,
@@ -82,5 +67,11 @@ class AppImage extends StatelessWidget {
         fit: fit ?? BoxFit.scaleDown,
       );
     }
+
+    if (isCircle) {
+      return ClipOval(child: child);
+    }
+
+    return child;
   }
 }

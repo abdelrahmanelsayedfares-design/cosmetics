@@ -1,8 +1,9 @@
+import 'package:cosmetics/core/ui/app_back.dart';
+import 'package:cosmetics/core/ui/app_buttom.dart';
 import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../core/ui/app_check_out.dart';
 import '../core/ui/app_text_check_out.dart';
 
 class CheckOutView extends StatefulWidget {
@@ -16,6 +17,7 @@ class _CheckOutViewState extends State<CheckOutView> {
   List<Marker> Markes = [
     Marker(markerId: MarkerId('1'), position: LatLng(31.048724, 31.389697)),
   ];
+
   // late GoogleMapController mapController;
   CameraPosition cameraPosition = (CameraPosition(
     target: LatLng(31.048724, 31.389697),
@@ -28,12 +30,7 @@ class _CheckOutViewState extends State<CheckOutView> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: Text('CheckOut'),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: AppImage(image: 'buttom.svg', width: 31, height: 31),
-        ),
+        leading: AppBack(paddingStart: 16),
       ),
       body: Container(
         height: 698,
@@ -46,34 +43,36 @@ class _CheckOutViewState extends State<CheckOutView> {
           ),
         ),
         child: SingleChildScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.only(left: 27, right: 20, top: 20),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
                   'Delivery to',
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 SizedBox(height: 18.h),
-                AppCheckOut(
-                  map: GoogleMap(
-                    scrollGesturesEnabled: false,
-                    zoomGesturesEnabled: false,
-                    myLocationButtonEnabled: false,
-                    zoomControlsEnabled: false,
-                    mapType: MapType.normal,
-                    markers: Markes.toSet(),
-                    initialCameraPosition: cameraPosition,
+                _Model(
+                  title: 'Home',
+                  supTitle: 'Mansoura, 14 Porsaid St',
+                  leading: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: SizedBox(
+                      height: 60.h,
+                      width: 97.w,
+                      child: GoogleMap(
+                        scrollGesturesEnabled: false,
+                        zoomGesturesEnabled: false,
+                        myLocationButtonEnabled: false,
+                        zoomControlsEnabled: false,
+                        mapType: MapType.normal,
+                        markers: Markes.toSet(),
+                        initialCameraPosition: cameraPosition,
+                      ),
+                    ),
                   ),
-                  mapWidth: 97.w,
-                  mapHeight: 60.h,
-                  title: 'Home\n',
-                  text: 'Mansoura, 14 Porsaid St',
-                  height: 84,
-                  borderRadius: BorderRadius.circular(30),
-                  iconImage: AppImage(image: 'arrow.svg'),
                 ),
                 SizedBox(height: 40.h),
                 Text(
@@ -81,34 +80,18 @@ class _CheckOutViewState extends State<CheckOutView> {
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 SizedBox(height: 18.h),
-                AppCheckOut(
-                  image: AppImage(
-                    image:
-                    'https://ahlinformatica.com/wp-content/uploads/2021/06/mc-1-1536x937.png',
-                  ),
-                  imageHeight: 20.h,
-                  imageWidth: 30.w,
-                  title: ' **** **** **** 0256',
-                  height: 57,
-                  borderRadius: BorderRadius.circular(25),
-                  iconImage: AppImage(image: 'arrow.svg'),
-                ),
+                _Model(title: '**** **** **** 0256', leadingImage: 'meza.svg'),
                 SizedBox(height: 12),
-                AppCheckOut(
-                  image: AppImage(image: 'shape.svg', width: 40.w),
-                  imageHeight: 20.h,
-                  imageWidth: 30.w,
+                _Model(
                   title: 'Add vaucher',
-                  height: 57,
-                  borderRadius: BorderRadius.circular(25),
-                  button: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(77.w, 33.650634765625.h),
-                    ),
+                  leadingImage: 'voucher.svg',
+                  trailing: AppButtom(
+                    text: 'Apply',
                     onPressed: () {},
-                    child: Text('Apply', style: TextStyle(color: Colors.white)),
+                    size: Size(77.w, 33.650634765625.h),
                   ),
                 ),
+
                 SizedBox(height: 31.5),
                 Text(
                   '  -' * 100,
@@ -136,9 +119,9 @@ class _CheckOutViewState extends State<CheckOutView> {
                   ),
                 ),
                 SizedBox(height: 40.h),
-                AppTextCheckOut(text: 'Subtotal', title: '16.100 EGP'),
+                DetailsText(text: 'Subtotal', title: '16.100 EGP'),
                 SizedBox(height: 10.h),
-                AppTextCheckOut(
+                DetailsText(
                   text: 'SHIPPING FEES',
                   title: 'TO BE CALCULATED',
                 ),
@@ -149,23 +132,62 @@ class _CheckOutViewState extends State<CheckOutView> {
                   thickness: 1,
                 ),
                 SizedBox(height: 30),
-                AppTextCheckOut(text: 'TOTAL + VAT', title: '16.100 EGP'),
+                DetailsText(text: 'TOTAL + VAT', title: '16.100 EGP',valueFontWeight: FontWeight.bold,),
                 SizedBox(height: 35),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      AppImage(image: 'order.svg'),
-                      Text(' ORDER', style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                ),
+                AppButtom(text: 'ORDER', onPressed: (){},icon: 'order.svg',),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+
+
+
+class _Model extends StatelessWidget {
+  final String title;
+  final String? supTitle;
+  final String? leadingImage;
+  final Widget? leading;
+  final Widget? trailing;
+  _Model({
+    super.key,
+    required this.title,
+    this.supTitle,
+    this.leadingImage,
+    this.leading,
+    this.trailing,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      horizontalTitleGap: 14.0,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: Color(0xff73B9BB), width: 1.5),
+        borderRadius: BorderRadius.circular(30),
+      ),
+      leading:
+          leading ?? AppImage(height: 24, width: 30, image: leadingImage ?? ''),
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: Color(0xff434C6D),
+            ),
+          ),
+          if (supTitle != null)
+            Text(supTitle!, style: Theme.of(context).textTheme.bodySmall),
+        ],
+      ),
+      trailing: trailing ?? AppImage(image: 'arrow.svg'),
     );
   }
 }

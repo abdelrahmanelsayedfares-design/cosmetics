@@ -24,7 +24,7 @@ dependencies:
   lottie: ^2.3.0
   circular_countdown_timer: ^0.2.4
   dio: ^5.9.0
-
+  animate_do: ^4.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -40,7 +40,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/svg/
     - assets/looties/
     - assets/icons/
 
@@ -49,14 +48,4 @@ flutter:
     - family: Montserrat
       fonts:
         - asset: assets/fonts/montserrat.ttf
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+

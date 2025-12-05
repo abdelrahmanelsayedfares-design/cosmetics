@@ -3,7 +3,6 @@ import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:cosmetics/views/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../core/ui/app_buttom.dart';
 
 class OnBoardingView extends StatefulWidget {
