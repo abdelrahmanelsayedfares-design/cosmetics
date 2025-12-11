@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppButtom extends StatelessWidget {
+  final bool isLoading;
   final String text;
   final VoidCallback? onPressed;
   final Color? color;
@@ -14,11 +15,15 @@ class AppButtom extends StatelessWidget {
     required this.onPressed,
     this.color,
     this.size,
-    this.icon,
+    this.icon,  this.isLoading=false,
   });
 
   @override
   Widget build(BuildContext context) {
+    if(isLoading){
+      return Center(child: CircularProgressIndicator(),);
+    }
+
     return ElevatedButton.icon(
       icon: icon != null ? AppImage(image: icon!) : null,
       style: ElevatedButton.styleFrom(

@@ -1,3 +1,4 @@
+import 'package:cosmetics/core/logic/cash_helper.dart';
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:cosmetics/views/auth/login.dart';
@@ -34,6 +35,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   ];
 
   void goToLogin() {
+    CashHelper.SetNotFirstTime();
     goTo(LoginView(), canPop: false);
   }
 

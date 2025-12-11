@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'app_counter_code.dart';
 import 'app_images.dart';
 
 class AppInput extends StatefulWidget {
@@ -12,6 +13,9 @@ class AppInput extends StatefulWidget {
   final double? bootomSpace;
   final String? suffixImage;
   final double? borderRadius;
+  final ValueChanged<String>? onCountryCodeChanged;
+  final  String? Function(String?)? validator;
+  final TextEditingController? controller;
   AppInput({
     super.key,
     this.image,
@@ -23,6 +27,8 @@ class AppInput extends StatefulWidget {
     this.bootomSpace,
     this.suffixImage,
     this.borderRadius,
+    this.controller,
+      this.onCountryCodeChanged, this.validator,
   });
 
   @override
@@ -30,13 +36,7 @@ class AppInput extends StatefulWidget {
 }
 
 class _AppInputState extends State<AppInput> {
-  late int selectedValue;
   bool _obscureText = true;
-  final List = [20, 30, 40, 50];
-  initState() {
-    super.initState();
-    selectedValue = List.first;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,49 +49,16 @@ class _AppInputState extends State<AppInput> {
         vertical: widget.bootomSpace ?? 16,
       ).r,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (widget.withCountrycode)
-            Padding(
-              padding: EdgeInsetsDirectional.only(end: 6.w),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Theme.of(
-                      context,
-                    ).inputDecorationTheme.enabledBorder!.borderSide.color,
-                  ),
-                ),
-                child: DropdownButton(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4).r,
-                  value: selectedValue,
-                  icon: Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 6),
-                    child: AppImage(
-                      image: 'down.svg',
-                      width: 8.212553024291992.w,
-                      height: 3.0836985111236572.h,
-                    ),
-                  ),
-                  items: List.map((e) {
-                    return DropdownMenuItem(
-                      value: e,
-                      child: Text(
-                        '+${e.toString()}',
-                        style: TextStyle(color: Color(0xff434C6D)),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    selectedValue = value!;
-                    setState(() {});
-                  },
-                ),
-              ),
-            ),
+            AppCounterCode(onCountryCodeChanged: widget.onCountryCodeChanged),
           Expanded(
             child: TextFormField(
+              validator:widget.validator ,
               keyboardType: widget.TextInputTypee,
               obscureText: widget.isPassword ? _obscureText : false,
+              controller: widget.controller,
               decoration: InputDecoration(
                 enabledBorder: (inputTheme.enabledBorder as OutlineInputBorder?)
                     ?.copyWith(borderRadius: borderRadius),
@@ -99,20 +66,19 @@ class _AppInputState extends State<AppInput> {
                     ?.copyWith(borderRadius: borderRadius),
                 labelText: widget.labelText,
                 suffixIcon: widget.isPassword
-                    ? IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _obscureText = !_obscureText;
-                          });
-                        },
-                        icon: AppImage(
-                          image: _obscureText
-                              ? 'password_off.svg'
-                              : 'password_on.svg',
+                    ?AppImage(
+                          image:
+                          'eyeoff.json',
                           width: 22,
                           height: 19.15,
-                        ),
-                      )
+                          fit: BoxFit.scaleDown,
+                          onLottieClicked: () {
+                            _obscureText=!_obscureText;
+                            setState(() {
+
+                            });
+                          },
+                        )
                     : (widget.suffixImage != null)
                     ? AppImage(
                         image: widget.suffixImage!,

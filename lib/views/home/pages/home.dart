@@ -1,5 +1,5 @@
 import 'package:cosmetics/core/ui/app_images.dart';
-import 'package:cosmetics/core/ui/grid_view.dart';
+import 'package:cosmetics/core/ui/app_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/ui/app_input.dart';
@@ -91,7 +91,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 14.h),
-              GridVieww(),
+              AppGridView(),
             ],
           ),
         ),

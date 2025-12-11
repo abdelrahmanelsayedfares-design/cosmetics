@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CodeNumber extends StatelessWidget {
-  const CodeNumber({super.key});
+class AppCodeNumber extends StatelessWidget {
+  const AppCodeNumber({super.key});
 
   @override
   Widget build(BuildContext context) {

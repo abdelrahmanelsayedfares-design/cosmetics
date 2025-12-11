@@ -16,7 +16,7 @@ class _HomeViewsState extends State<HomeViews> {
   final list = [
     _Model(icon: 'home.svg', page: HomePage()),
     _Model(icon: 'categories.svg', page: CategoriesPage()),
-    _Model(icon: 'my_cart.svg', page: MyCartPage()),
+    _Model(icon: 'my_cart.svg', page: MyCartPageView()),
     _Model(icon: 'profile.svg', page: ProfilePage()),
   ];
 

@@ -20,3 +20,19 @@ void goTo(Widget page, {bool canPop = true, int? delayInSeconds}) {
     action();
   }
 }
+
+void showMasg(String msg){
+ if(msg.isNotEmpty ){
+   ScaffoldMessenger.of(navigatorKey.currentContext!,).
+   showSnackBar(
+       SnackBar(
+         content:
+         Text(msg),
+         duration:  Duration(seconds: 2),
+         // Text('الرجاء تفعيل خدمه الوصول الي الموقع')
+       ));
+
+ }
+
+  
+}

@@ -1,19 +1,16 @@
+import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_back.dart';
 import 'package:cosmetics/core/ui/app_buttom.dart';
 import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/views/pin_location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../core/ui/app_text_check_out.dart';
+import '../core/ui/app_details_text.dart';
 
-class CheckOutView extends StatefulWidget {
-  const CheckOutView({super.key});
+class CheckOutView extends StatelessWidget {
+   CheckOutView({super.key});
 
-  @override
-  State<CheckOutView> createState() => _CheckOutViewState();
-}
-
-class _CheckOutViewState extends State<CheckOutView> {
   List<Marker> Markes = [
     Marker(markerId: MarkerId('1'), position: LatLng(31.048724, 31.389697)),
   ];
@@ -23,6 +20,7 @@ class _CheckOutViewState extends State<CheckOutView> {
     target: LatLng(31.048724, 31.389697),
     zoom: 14,
   ));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,19 +55,39 @@ class _CheckOutViewState extends State<CheckOutView> {
                 _Model(
                   title: 'Home',
                   supTitle: 'Mansoura, 14 Porsaid St',
-                  leading: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: SizedBox(
-                      height: 60.h,
-                      width: 97.w,
-                      child: GoogleMap(
-                        scrollGesturesEnabled: false,
-                        zoomGesturesEnabled: false,
-                        myLocationButtonEnabled: false,
-                        zoomControlsEnabled: false,
-                        mapType: MapType.normal,
-                        markers: Markes.toSet(),
-                        initialCameraPosition: cameraPosition,
+                  leading: GestureDetector(
+                    onTap: (){
+                      goTo(PinLocationView(),canPop: true);
+
+                    },
+                    // onTap: ()async{
+                    //   final lat = cameraPosition.target.latitude;
+                    //   final lng = cameraPosition.target.longitude;
+                    //
+                    //   final availableMaps = await MapLauncher.installedMaps;
+                    //
+                    //   await availableMaps.first.showMarker(
+                    //     coords: Coords(31.048724, 31.389697),
+                    //     title: "الموقع",
+                    //   );
+                    // },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: SizedBox(
+                        height: 60.h,
+                        width: 97.w,
+                        child: AbsorbPointer(
+                          absorbing: true,
+                          child: GoogleMap(
+                            scrollGesturesEnabled: false,
+                            zoomGesturesEnabled: false,
+                            myLocationButtonEnabled: false,
+                            zoomControlsEnabled: false,
+                            mapType: MapType.terrain,
+                            markers: Markes.toSet(),
+                            initialCameraPosition: cameraPosition,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -143,9 +161,6 @@ class _CheckOutViewState extends State<CheckOutView> {
     );
   }
 }
-
-
-
 
 class _Model extends StatelessWidget {
   final String title;

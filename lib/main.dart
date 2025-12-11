@@ -1,16 +1,15 @@
-import 'package:cosmetics/views/auth/creat_password.dart';
+import 'package:cosmetics/core/logic/cash_helper.dart';
 import 'package:cosmetics/views/auth/login.dart';
-import 'package:cosmetics/views/auth/forget_password.dart';
-import 'package:cosmetics/views/check_out.dart';
-import 'package:cosmetics/views/on_boarding.dart';
 import 'package:cosmetics/views/splach.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'core/logic/helper_methods.dart';
 import 'moves.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding();
+  await CashHelper.init();
   runApp(const MyApp());
 }
 
@@ -95,9 +94,17 @@ class MyApp extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide(color: Color(0xffB3B3C1)),
               ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide(color: Colors.red),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide(color: Colors.red),
+              ),
             ),
           ),
-          home: CheckOutView(),
+          home: LoginView(),
         );
       },
     );

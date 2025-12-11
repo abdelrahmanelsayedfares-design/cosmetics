@@ -1,11 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_images.dart';
-import '../../model/item_image_crd.dart';
 
-class GridVieww extends StatelessWidget {
-  const GridVieww({super.key});
-
+class AppGridView extends StatelessWidget {
+   AppGridView({super.key});
+  List<_itemImageCard> Item_Image_Card = [
+    _itemImageCard(
+      terxt: 'Face tint / lip tint',
+      image:
+      'https://i.pinimg.com/originals/11/f5/22/11f522c7f8ead5519a4b102723f0a89c.jpg',
+      price: '\$44.99',
+    ),
+    _itemImageCard(
+      terxt: 'Athe Red lipstick',
+      image: 'https://cdn.wconcept.com/products/7202026/08/720202608_1.jpg',
+      price: '\$44.99',
+    ),
+    _itemImageCard(
+      terxt: 'Athe Red lipstick',
+      image: 'https://cdn.wconcept.com/products/7202026/08/720202608_1.jpg',
+      price: '\$44.99',
+    ),
+    _itemImageCard(
+      terxt: 'Face tint / lip tint',
+      image:
+      'https://i.pinimg.com/originals/11/f5/22/11f522c7f8ead5519a4b102723f0a89c.jpg',
+      price: '\$44.99',
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -89,4 +111,16 @@ class GridVieww extends StatelessWidget {
       ),
     );
   }
+}
+
+class _itemImageCard {
+  final String image;
+  final String terxt;
+  final String price;
+
+  _itemImageCard({
+    required this.image,
+    required this.price,
+    required this.terxt,
+  });
 }

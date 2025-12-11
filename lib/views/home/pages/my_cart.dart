@@ -2,11 +2,11 @@ import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/ui/list_view_cart.dart';
+import '../../../core/ui/app_list_view_cart.dart';
 import '../../check_out.dart';
 
-class MyCartPage extends StatelessWidget {
-  const MyCartPage({super.key});
+class MyCartPageView extends StatelessWidget {
+  const MyCartPageView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class MyCartPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 34.h),
-              ListViewCart(),
+              AppListViewCart(),
             ],
           ),
         ),
