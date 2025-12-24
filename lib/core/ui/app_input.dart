@@ -66,19 +66,22 @@ class _AppInputState extends State<AppInput> {
                     ?.copyWith(borderRadius: borderRadius),
                 labelText: widget.labelText,
                 suffixIcon: widget.isPassword
-                    ?AppImage(
-                          image:
-                          'eyeoff.json',
-                          width: 22,
-                          height: 19.15,
-                          fit: BoxFit.scaleDown,
-                          onLottieClicked: () {
-                            _obscureText=!_obscureText;
-                            setState(() {
+                    ?Padding(
+                      padding: const EdgeInsets.all(12).r,
+                      child: AppImage(
+                            image:
+                            'password_view.json',
+                            width: 22.w,
+                            height: 19.15.h,
+                            fit: BoxFit.scaleDown,
+                            onLottieClicked: () {
+                              _obscureText=!_obscureText;
+                              setState(() {
 
-                            });
-                          },
-                        )
+                              });
+                            },
+                          ),
+                    )
                     : (widget.suffixImage != null)
                     ? AppImage(
                         image: widget.suffixImage!,

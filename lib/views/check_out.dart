@@ -41,120 +41,108 @@ class CheckOutView extends StatelessWidget {
           ),
         ),
         child: SingleChildScrollView(
+          padding: EdgeInsets.only(left: 27, right: 20, top: 20),
           physics: BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 27, right: 20, top: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  'Delivery to',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                SizedBox(height: 18.h),
-                _Model(
-                  title: 'Home',
-                  supTitle: 'Mansoura, 14 Porsaid St',
-                  leading: GestureDetector(
-                    onTap: (){
-                      goTo(PinLocationView(),canPop: true);
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'Delivery to',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              SizedBox(height: 18.h),
+              _Model(
+                title: 'Home',
+                supTitle: 'Mansoura, 14 Porsaid St',
+                leading: GestureDetector(
+                  onTap: (){
+                    goTo(PinLocationView(),canPop: true);
 
-                    },
-                    // onTap: ()async{
-                    //   final lat = cameraPosition.target.latitude;
-                    //   final lng = cameraPosition.target.longitude;
-                    //
-                    //   final availableMaps = await MapLauncher.installedMaps;
-                    //
-                    //   await availableMaps.first.showMarker(
-                    //     coords: Coords(31.048724, 31.389697),
-                    //     title: "الموقع",
-                    //   );
-                    // },
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: SizedBox(
-                        height: 60.h,
-                        width: 97.w,
-                        child: AbsorbPointer(
-                          absorbing: true,
-                          child: GoogleMap(
-                            scrollGesturesEnabled: false,
-                            zoomGesturesEnabled: false,
-                            myLocationButtonEnabled: false,
-                            zoomControlsEnabled: false,
-                            mapType: MapType.terrain,
-                            markers: Markes.toSet(),
-                            initialCameraPosition: cameraPosition,
-                          ),
+                  },
+
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: SizedBox(
+                      height: 60.h,
+                      width: 97.w,
+                      child: AbsorbPointer(
+                        absorbing: true,
+                        child: GoogleMap(
+                          scrollGesturesEnabled: false,
+                          zoomGesturesEnabled: false,
+                          myLocationButtonEnabled: false,
+                          zoomControlsEnabled: false,
+                          mapType: MapType.terrain,
+                          markers: Markes.toSet(),
+                          initialCameraPosition: cameraPosition,
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 40.h),
-                Text(
-                  'Payment Method',
-                  style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              SizedBox(height: 40.h),
+              Text(
+                'Payment Method',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              SizedBox(height: 18.h),
+              _Model(title: '**** **** **** 0256', leadingImage: 'meza.svg'),
+              SizedBox(height: 12),
+              _Model(
+                title: 'Add vaucher',
+                leadingImage: 'voucher.svg',
+                trailing: AppButtom(
+                  text: 'Apply',
+                  onPressed: () {},
+                  size: Size(77.w, 33.650634765625.h),
                 ),
-                SizedBox(height: 18.h),
-                _Model(title: '**** **** **** 0256', leadingImage: 'meza.svg'),
-                SizedBox(height: 12),
-                _Model(
-                  title: 'Add vaucher',
-                  leadingImage: 'voucher.svg',
-                  trailing: AppButtom(
-                    text: 'Apply',
-                    onPressed: () {},
-                    size: Size(77.w, 33.650634765625.h),
-                  ),
-                ),
+              ),
 
-                SizedBox(height: 31.5),
-                Text(
-                  '  -' * 100,
-                  maxLines: 1,
-                  style: TextStyle(
-                    color: Color(0xff434C6D4F).withValues(alpha: .31),
-                  ),
+              SizedBox(height: 31.5),
+              Text(
+                '  -' * 100,
+                maxLines: 1,
+                style: TextStyle(
+                  color: Color(0xff434C6D4F).withValues(alpha: .31),
                 ),
-                SizedBox(height: 31.5.h),
-                Text(
-                  '- REVIEW PAYMENT',
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xff434C6D),
-                  ),
+              ),
+              SizedBox(height: 31.5.h),
+              Text(
+                '- REVIEW PAYMENT',
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xff434C6D),
                 ),
-                SizedBox(height: 20.h),
-                Text(
-                  'PAYMENT SUMMARY',
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xff434C6D),
-                  ),
+              ),
+              SizedBox(height: 20.h),
+              Text(
+                'PAYMENT SUMMARY',
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xff434C6D),
                 ),
-                SizedBox(height: 40.h),
-                DetailsText(text: 'Subtotal', title: '16.100 EGP'),
-                SizedBox(height: 10.h),
-                DetailsText(
-                  text: 'SHIPPING FEES',
-                  title: 'TO BE CALCULATED',
-                ),
-                SizedBox(height: 30.h),
-                Divider(
-                  color: Colors.lightBlueAccent,
-                  height: .5.h,
-                  thickness: 1,
-                ),
-                SizedBox(height: 30),
-                DetailsText(text: 'TOTAL + VAT', title: '16.100 EGP',valueFontWeight: FontWeight.bold,),
-                SizedBox(height: 35),
-                AppButtom(text: 'ORDER', onPressed: (){},icon: 'order.svg',),
-              ],
-            ),
+              ),
+              SizedBox(height: 40.h),
+              DetailsText(text: 'Subtotal', title: '16.100 EGP'),
+              SizedBox(height: 10.h),
+              DetailsText(
+                text: 'SHIPPING FEES',
+                title: 'TO BE CALCULATED',
+              ),
+              SizedBox(height: 30.h),
+              Divider(
+                color: Colors.lightBlueAccent,
+                height: .5.h,
+                thickness: 1,
+              ),
+              SizedBox(height: 30),
+              DetailsText(text: 'TOTAL + VAT', title: '16.100 EGP',valueFontWeight: FontWeight.bold,),
+              SizedBox(height: 35),
+              AppButtom(text: 'ORDER', onPressed: (){},icon: 'order.svg',),
+            ],
           ),
         ),
       ),

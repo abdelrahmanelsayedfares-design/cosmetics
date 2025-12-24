@@ -1,10 +1,12 @@
 import 'package:cosmetics/core/logic/cash_helper.dart';
 import 'package:cosmetics/views/auth/login.dart';
+import 'package:cosmetics/views/home/views.dart';
 import 'package:cosmetics/views/splach.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/logic/helper_methods.dart';
+import 'growfet.dart';
 import 'moves.dart';
 
 void main() async {
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor: Color(0xff434C6D), // The color is from above
+                foregroundColor: Color(0xff434C6D),
                 // textStyle: TextStyle(color: Color(0xff434C6D), ),
               ),
             ),
@@ -104,7 +106,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: LoginView(),
+          home: SplachView(),
         );
       },
     );

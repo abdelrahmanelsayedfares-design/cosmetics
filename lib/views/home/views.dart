@@ -1,18 +1,18 @@
-import 'package:cosmetics/views/home/pages/categories.dart';
+import 'package:cosmetics/views/home/pages/categories/view.dart';
 import 'package:cosmetics/views/home/pages/my_cart.dart';
 import 'package:cosmetics/views/home/pages/profile.dart';
 import 'package:flutter/material.dart';
 import '../../core/ui/app_images.dart';
-import 'pages/home.dart';
+import 'pages/home/view.dart';
 
-class HomeViews extends StatefulWidget {
-  const HomeViews({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  State<HomeViews> createState() => _HomeViewsState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewsState extends State<HomeViews> {
+class _HomeViewState extends State<HomeView> {
   final list = [
     _Model(icon: 'home.svg', page: HomePage()),
     _Model(icon: 'categories.svg', page: CategoriesPage()),

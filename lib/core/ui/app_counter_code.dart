@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,9 +17,17 @@ class _AppCounterCodeState extends State<AppCounterCode> {
   final List = ['20', '30', '40', '50'];
   initState() {
     super.initState();
+    getData();
     selectedCounteryCode = List.first;
     widget.onCountryCodeChanged?.call(selectedCounteryCode);
   }
+
+  Future<void> getData()async{
+   final resp=Dio().get('path');
+
+
+  }
+
 
   @override
   Widget build(BuildContext context) {

@@ -36,7 +36,7 @@ class _AppImageState extends State<AppImage>
     if (widget.onLottieClicked != null) {
       _controller = AnimationController(
         vsync: this,
-        duration: Duration(seconds: 2),
+        duration: Duration(milliseconds: 500),
       );
     }
   }

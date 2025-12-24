@@ -46,7 +46,7 @@ class SuccesDialog extends StatelessWidget {
               if (isFromCreatePassword) {
                 goTo(LoginView(),canPop: false);
               } else {
-                goTo(HomeViews(),canPop: false);
+                goTo(HomeView(),canPop: false);
               }
             },
           ),
