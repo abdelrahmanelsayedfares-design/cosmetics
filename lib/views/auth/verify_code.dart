@@ -1,4 +1,5 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:cosmetics/core/logic/dio_helper.dart';
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,11 +11,56 @@ import 'creat_account.dart';
 import 'success.dart';
 import 'creat_password.dart';
 
-class VerifyCodeView extends StatelessWidget {
+class VerifyCodeView extends StatefulWidget {
+  final String? phoneNumber;
+  final String? countryCode;
   final bool isFromForgotPassword;
-  final CountDownController _controller = CountDownController();
 
-   VerifyCodeView({super.key, this.isFromForgotPassword = false});
+  VerifyCodeView({
+    super.key,
+    this.isFromForgotPassword = false,
+     this.phoneNumber,
+     this.countryCode,
+  });
+
+  @override
+  State<VerifyCodeView> createState() => _VerifyCodeViewState();
+}
+
+class _VerifyCodeViewState extends State<VerifyCodeView> {
+  final otp = TextEditingController();
+
+  Future<void> sendData() async {
+    final oTp = otp.text.trim();
+    final resp = await DioHelper.sendData(
+      path: 'api/Auth/verify-otp',
+      data: {
+        "countryCode": widget.countryCode,
+        "phoneNumber": widget.phoneNumber,
+        "otpCode": oTp,
+      },
+    );
+    print('00000000000');
+    // if (resp.isSuccess) {
+    //   showMasg(resp.data['message']);
+    // } else {
+    //   showMasg(resp.msg ?? 'Error', isError: true);
+    // }
+    if (resp.isSuccess) {
+      if (widget.isFromForgotPassword) {
+        goTo(CreatPasswordView(), canPop: false);
+      } else {
+        showDialog(
+          context: context,
+          builder: (_) => SuccesDialog(),
+        );
+      }
+    } else {
+      showMasg(resp.msg ?? 'Error', isError: true);
+    }
+  }
+
+  final CountDownController _controller = CountDownController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +72,7 @@ class VerifyCodeView extends StatelessWidget {
             child: Column(
               children: [
                 AppBack(),
-                AppImage(
-                  image: 'splash_image1.png',
-                  width: 67.w,
-                  height: 62.h,
-                ),
+                AppImage(image: 'splash_image1.png', width: 67.w, height: 62.h),
                 SizedBox(height: 40),
                 Text('Verify Code'),
                 SizedBox(height: 40),
@@ -77,6 +119,7 @@ class VerifyCodeView extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 PinCodeTextField(
+                  controller: otp,
                   appContext: context,
                   length: 4,
                   keyboardType: TextInputType.number,
@@ -145,7 +188,10 @@ class VerifyCodeView extends StatelessWidget {
                       isReverse: true,
                     ),
                     StreamBuilder<int>(
-                      stream: Stream.periodic(const Duration(seconds: 1), (i) => i).take(61),
+                      stream: Stream.periodic(
+                        const Duration(seconds: 1),
+                        (i) => i,
+                      ).take(61),
                       builder: (context, snapshot) {
                         int remaining = 60 - (snapshot.data ?? 0);
                         String formatted =
@@ -166,16 +212,17 @@ class VerifyCodeView extends StatelessWidget {
                 AppButtom(
                   text: 'Done',
                   onPressed: () {
-                    if (isFromForgotPassword) {
-                      goTo(CreatPasswordView(), canPop: false);
-                    } else {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return SuccesDialog();
-                        },
-                      );
-                    }
+                    // if (widget.isFromForgotPassword) {
+                    //   goTo(CreatPasswordView(), canPop: false);
+                    // } else {
+                    //   showDialog(
+                    //     context: context,
+                    //     builder: (context) {
+                    //       return SuccesDialog();
+                    //     },
+                    //   );
+                    // }
+                  sendData();
                   },
                 ),
               ],

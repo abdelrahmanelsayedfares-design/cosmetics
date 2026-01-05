@@ -12,7 +12,6 @@ import 'app_images.dart';
 
 class AppCounterCode extends StatefulWidget {
   final ValueChanged<String>? onCountryCodeChanged;
-
   const AppCounterCode({super.key, this.onCountryCodeChanged});
 
   @override

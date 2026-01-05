@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 
-import 'helper_methods.dart';
-
 class DioHelper {
   static final _dio = Dio(
     BaseOptions(
@@ -27,13 +25,12 @@ class DioHelper {
     } on DioException catch (ex) {
       return CustomResponce(
         isSuccess: false,
-        msg: ex.response?.data['message'],
+        msg: ex.response?.data['message'] ?? '',
       );
-      // ex.response?.data['message']
     }
   }
 
-  static Future<CustomResponce> sedData({
+  static Future<CustomResponce> sendData({
     String path = "",
     Map<String, dynamic>? data,
   }) async {
@@ -43,9 +40,8 @@ class DioHelper {
     } on DioException catch (ex) {
       return CustomResponce(
         isSuccess: false,
-        msg: ex.response?.data['message'],
+        msg: ex.response?.data['message'] ?? '',
       );
-      // ex.response?.data['message']
     }
   }
 }

@@ -27,7 +27,7 @@ class _LoginViewState extends State<LoginView> {
     print(password);
     print(selectedCounterCode);
 
-    final resp = await DioHelper.sedData(
+    final resp = await DioHelper.sendData(
       path: 'api/Auth/login',
       data: {
         "countryCode": selectedCounterCode,

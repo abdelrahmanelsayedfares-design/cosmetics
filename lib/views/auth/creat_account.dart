@@ -1,3 +1,4 @@
+import 'package:cosmetics/core/logic/dio_helper.dart';
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/logic/input_validator.dart';
 import 'package:cosmetics/core/ui/app_images.dart';
@@ -22,8 +23,35 @@ class _CreatAccountViewState extends State<CreatAccountView> {
   final phoneController = TextEditingController();
   final passController = TextEditingController();
   final confirmPassController = TextEditingController();
+  final emailController = TextEditingController();
   String? selectedCounterCode;
   bool isLoginClicked = false;
+
+  Future<void> sendData() async {
+    final name = nameController.text.trim();
+    final phone = phoneController.text.trim();
+    final password = passController.text.trim();
+    final email = emailController.text.trim();
+    print(phone);
+    print(password);
+    print(selectedCounterCode);
+
+    final resp = await DioHelper.sendData(
+      path: 'api/Auth/register',
+      data: {
+        "username": name,
+        "countryCode": selectedCounterCode,
+        "phoneNumber": phone,
+        "email": email,
+        "password": password,
+      },
+    );
+    if (resp.isSuccess) {
+      showMasg('Regiter Success');
+    } else {
+      showMasg(resp.msg, isError: true);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,39 +99,35 @@ class _CreatAccountViewState extends State<CreatAccountView> {
                   validator: InputValidator.phoneValidator,
                 ),
                 AppInput(
-                  controller: phoneController,
+                  controller: emailController,
+                  labelText: 'your Email',
+                  TextInputTypee: TextInputType.emailAddress,
+                  // isPassword: true,
+                  bootomSpace: 0,
+                  validator: InputValidator.passwordValidator,
+                ),
+                AppInput(
+                  controller: passController,
                   labelText: 'Create your password',
                   TextInputTypee: TextInputType.text,
                   isPassword: true,
                   validator: InputValidator.passwordValidator,
                 ),
-                AppInput(
-                  controller: confirmPassController,
-                  labelText: 'Confirm password',
-                  TextInputTypee: TextInputType.text,
-                  isPassword: true,
-                  bootomSpace: 0,
-                  validator: InputValidator.passwordValidator,
-                ),
+
 
                 SizedBox(height: 43.h),
                 AppButtom(
                   text: 'Next',
                   onPressed: () {
-                    isLoginClicked=true;
-                    if(formKey.currentState!.validate()){
-                      final phone=phoneController.text.trim();
-                      final password=passController.text.trim();
-                      print(phone);
-                      print(password);
-                      print(selectedCounterCode);
+                    isLoginClicked = true;
+                    if (formKey.currentState!.validate()) {
+                      sendData();
                       goTo(
                         VerifyCodeView(isFromForgotPassword: false),
                         canPop: false,
 
                       );
                     }
-
                   },
                 ),
               ],
