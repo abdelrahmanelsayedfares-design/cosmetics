@@ -15,19 +15,19 @@ class OnBoardingView extends StatefulWidget {
 
 class _OnBoardingViewState extends State<OnBoardingView> {
   final List = [
-    _model(
+    _Model(
       image: 'on_boarding_1.png',
       text: 'WELCOME!',
       des:
           'Makeup has the power to transform your\n mood and empowers you to be a more confident person.',
     ),
-    _model(
+    _Model(
       image: 'on_boarding_2.png',
       text: 'SEARCH & PICK!',
       des:
           'We have dedicated set of products and\n routines hand picked for every skin type.',
     ),
-    _model(
+    _Model(
       image: 'on_boarding_3.png',
       text: 'PUCH NOTIFICATIONS!',
       des: 'Allow notifications for new makeup &\n cosmetics offers.',
@@ -110,7 +110,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   }
 }
 
-class _model {
+class _Model {
   final String image, text, des;
-  _model({required this.image, required this.text, required this.des});
+
+  _Model({required this.image, required this.text, required this.des});
 }

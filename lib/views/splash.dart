@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:animate_do/animate_do.dart';
 
-class SplachView extends StatefulWidget {
-  const SplachView({super.key});
+class SplashView extends StatefulWidget {
+  const SplashView({super.key});
 
   @override
-  State<SplachView> createState() => _SplachViewState();
+  State<SplashView> createState() => _SplashViewState();
 }
 
-class _SplachViewState extends State<SplachView> {
+class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();

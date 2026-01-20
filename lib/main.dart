@@ -1,7 +1,7 @@
 import 'package:cosmetics/core/logic/cash_helper.dart';
 import 'package:cosmetics/views/auth/login.dart';
 import 'package:cosmetics/views/home/views.dart';
-import 'package:cosmetics/views/splach.dart';
+import 'package:cosmetics/views/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';

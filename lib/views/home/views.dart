@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
     _Model(icon: 'profile.svg', page: ProfilePage()),
   ];
 
-  int Current = 0;
+  int current = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +49,10 @@ class _HomeViewState extends State<HomeView> {
         child: BottomNavigationBar(
           onTap: (index) {
             setState(() {
-              Current = index;
+              current = index;
             });
           },
-          currentIndex: Current,
+          currentIndex: current,
           unselectedFontSize: 0,
           selectedFontSize: 0,
           type: BottomNavigationBarType.fixed,
@@ -61,14 +61,14 @@ class _HomeViewState extends State<HomeView> {
             (index) => BottomNavigationBarItem(
               icon: AppImage(
                 image: list[index].icon,
-                color: Current == index ? Color(0xffDA498C) : null,
+                color: current == index ? Color(0xffDA498C) : null,
               ),
               label: '',
             ),
           ),
         ),
       ),
-      body: list[Current].page,
+      body: list[current].page,
     );
   }
 }

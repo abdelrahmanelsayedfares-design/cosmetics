@@ -1,48 +1,119 @@
 # 💄 Cosmetics App
 
-A simple and elegant Flutter app for managing and shopping beauty products 💅  
-Developed using **Flutter** and **Dart**, with a user-friendly interface and smooth performance.
+A clean and scalable **Flutter** application for browsing and shopping cosmetics products 🛍️✨
+The app focuses on reusable UI components, clear folder structure, and smooth user experience.
 
 ---
 
 ## 🚀 Features
-- 🧾 Browse different product categories
-- 🛍️ Add products to the shopping cart
-- 🔍 Search for items
-- 👤 User profile page
-- 🎨 Clean and functional UI using `Material Design`
+
+* 🧴 Browse cosmetics products
+* 🛒 Add & remove items from cart
+* ➕ Increase / decrease product quantity
+* ❤️ Favorites support
+* 🔐 Full authentication flow
+
+    * Login
+    * Create account
+    * Verify code
+    * Forgot password
+    * Success screen
+* 🧾 Checkout flow
+* 📍 Location & onboarding screens
+* 🎨 Reusable custom UI widgets
 
 ---
 
 ## 🧠 Technologies Used
-- **Flutter**
-- **Dart**
+
+* **Flutter**
+* **Dart**
+* **Dio** for networking
+* Custom helpers & utilities
+* Material Design
+
+---
+
+## 🗂️ Project Structure
+
+The project follows a clean and organized structure:
+
+```
+lib/
+ ├── core/
+ │   ├── logic/
+ │   │   ├── cash_helper.dart        # Local storage helper
+ │   │   ├── dio_helper.dart         # API & network handling
+ │   │   ├── helper_methods.dart     # Common helper methods
+ │   │   └── input_validator.dart    # Form validation
+ │   │
+ │   └── ui/
+ │       ├── app_back.dart
+ │       ├── app_button.dart
+ │       ├── app_counter_code.dart
+ │       ├── app_details_text.dart
+ │       ├── app_images.dart
+ │       ├── app_input.dart
+ │       ├── app_list_view_cart.dart
+ │       └── app_login_or_register.dart
+ │
+ ├── views/
+ │   ├── auth/
+ │   │   ├── creat_account.dart
+ │   │   ├── creat_password.dart
+ │   │   ├── forget_password.dart
+ │   │   ├── login.dart
+ │   │   ├── success.dart
+ │   │   └── verify_code.dart
+ │   │
+ │   ├── home/
+ │   │   ├── check_out.dart
+ │   │   ├── on_boarding.dart
+ │   │   ├── pin_location.dart
+ │   │   └── splash.dart
+ │   │
+ │   └── growfet.dart
+ │
+ └── main.dart
+```
+
+---
+
+## ▶️ Run the Project
+
+```bash
+flutter pub get
+flutter run
+```
+
 ---
 
 ## 📸 Screenshots
-*(Add some screenshots of the app here if you want)*  
-For example:
-![Home Page Screenshot](example1.png)
-![Profile Page Screenshot](example2.png)
+
+*(Add screenshots of the app here)*
+
+---
+
+## 📱 Download the App (APK)
+
+👉 [Download APK](https://drive.google.com/uc?export=download&id=1BuWdAW7zPJofMuXiPRrXtlvMILVSg5eE)
+
+---
+
+## 🎥 App Demo Video
+
+[Watch Demo Video](https://www.youtube.com/shorts/QMcOjRVfef8)
 
 ---
 
 ## 👨‍💻 Developer
-**Abdelrahman Elsayed Fares**  
-📧 [abdelrahmanelsayedfares@gmail.com](mailto:abdelrahmanelsayedfares@gmail.com?subject=Regarding%20your%20Flutter%20app)
-🌐 [GitHub Profile](https://github.com/abdelrahmanelsayedfares-design)
+
+**Abdelrahman Elsayed Fares**
+Flutter Developer
+
+📧 Email: [abdelrahmanelsayedfares@gmail.com](mailto:abdelrahmanelsayedfares@gmail.com)
+🌐 GitHub: [https://github.com/abdelrahmanelsayedfares-design](https://github.com/abdelrahmanelsayedfares-design)
 
 ---
 
-> ✨ *Developed with Flutter ❤️ by Abdelrahman Elsayed*
-## 📱 Download the App (APK)
-You can download and install the app directly on your Android device:
-
-👉 [Download APK ](https://drive.google.com/uc?export=download&id=1BuWdAW7zPJofMuXiPRrXtlvMILVSg5eE)
-
-## 🎥 App Demo Video
-Watch a short demo of the app below 👇
-
-[![Watch the video](https://img.youtube.com/vi/QOdCgU7IQoI/0.jpg)](https://www.youtube.com/shorts/QMcOjRVfef8)
-
-
+> ✨ Developed with Flutter ❤️ by Abdelrahman Elsayed
