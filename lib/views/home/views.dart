@@ -1,9 +1,9 @@
 import 'package:cosmetics/views/home/pages/categories/view.dart';
-import 'package:cosmetics/views/home/pages/my_cart.dart';
-import 'package:cosmetics/views/home/pages/profile.dart';
+import 'package:cosmetics/views/home/pages/home/view.dart';
+import 'package:cosmetics/views/home/pages/my_cart/view.dart';
+import 'package:cosmetics/views/home/pages/profile/view.dart';
 import 'package:flutter/material.dart';
 import '../../core/ui/app_images.dart';
-import 'pages/home/view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

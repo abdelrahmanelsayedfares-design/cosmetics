@@ -1,14 +1,15 @@
 import 'dart:convert';
 import 'dart:ffi';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cosmetics/core/logic/dio_helper.dart';
+import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/ui/app_input.dart';
+import '../../../../../core/ui/app_input.dart';
 part 'components/offers.dart';
 part 'components/list.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -28,12 +29,10 @@ class HomePage extends StatelessWidget {
                 TextInputTypee: TextInputType.text,
                 image: 'search.svg',
               ),
-              SizedBox(height: 12.39),
+              SizedBox(height: 12.39.h),
               _Offers(),
               SizedBox(height: 26.h),
               _List(),
-              SizedBox(height: 15.h),
-              _List(isTopRated:false,),
             ],
           ),
         ),
@@ -76,7 +75,17 @@ class _Item extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 6, right: 6).r,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () async {
+                        final resp = await DioHelper.sendData(
+                          'api/Cart/add?productId=${model.id}&quantity=1',
+                        );
+
+                        if (resp.isSuccess) {
+                          showMasg('Added to cart');
+                        } else {
+                          showMasg(resp.msg, isError: true);
+                        }
+                      },
                       child: Container(
                         width: 32.w,
                         height: 32.h,
@@ -99,7 +108,7 @@ class _Item extends StatelessWidget {
             ),
             SizedBox(height: 11.h),
             Text(
-              model.title,
+              model.name_en,
               style: TextStyle(
                 color: Color(0xff434C6D),
                 fontSize: 16,

@@ -1,17 +1,12 @@
 import 'package:cosmetics/core/logic/cash_helper.dart';
-import 'package:cosmetics/views/auth/login.dart';
-import 'package:cosmetics/views/home/views.dart';
 import 'package:cosmetics/views/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'core/logic/helper_methods.dart';
-import 'growfet.dart';
-import 'moves.dart';
 
 void main() async {
   WidgetsFlutterBinding();
-  await CashHelper.init();
+  await CacheHelper.init();
   runApp(const MyApp());
 }
 
@@ -106,7 +101,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: LoginView(),
+          home: SplashView(),
         );
       },
     );

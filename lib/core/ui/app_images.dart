@@ -28,7 +28,7 @@ class AppImage extends StatefulWidget {
 
 class _AppImageState extends State<AppImage>
     with SingleTickerProviderStateMixin {
-    AnimationController? _controller;
+  AnimationController? _controller;
 
   @override
   void initState() {
@@ -60,7 +60,14 @@ class _AppImageState extends State<AppImage>
         height: widget.height,
         fit: widget.fit ?? BoxFit.cover,
         color: widget.color,
-
+        errorBuilder: (context, error, stackTrace) => AppImage(
+          image:
+              'https://th.bing.com/th/id/OIP.l6YuPV9OOXzk8kmuwPFurwAAAA?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
+          width: widget.width,
+          height: widget.height,
+          fit: widget.fit ?? BoxFit.cover,
+          color: widget.color,
+        ),
         loadingBuilder: (context, child, loadingProgress) {
           if (loadingProgress == null) return child;
           return const Center(
@@ -73,7 +80,7 @@ class _AppImageState extends State<AppImage>
         },
       );
     } else if (widget.image.toLowerCase().endsWith('.json')) {
-      child= Lottie.asset(
+      child = Lottie.asset(
         'assets/looties/${widget.image}',
         width: widget.width,
         height: widget.height,
@@ -81,7 +88,7 @@ class _AppImageState extends State<AppImage>
         controller: _controller,
       );
       if (widget.onLottieClicked != null) {
-       child= GestureDetector(
+        child = GestureDetector(
           onTap: () {
             if (_controller!.isCompleted) {
               _controller!.reverse();
@@ -89,15 +96,11 @@ class _AppImageState extends State<AppImage>
               _controller!.forward();
             }
             widget.onLottieClicked?.call();
-
           },
-            child:child,
+          child: child,
         );
-
-
       }
-
-      } else {
+    } else {
       child = Image.asset(
         'assets/images/${widget.image}',
         width: widget.width,

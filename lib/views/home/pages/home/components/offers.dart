@@ -9,15 +9,14 @@ class _Offers extends StatefulWidget {
 
 class _OffersState extends State<_Offers> {
   List<OfferModel>? list;
-  Future<void> getData() async {
-    final resp = await Dio().get(
-      'https://cosmatics-302b5-default-rtdb.europe-west1.firebasedatabase.app/offers.json',
-    );
-     list= OfferData.fromjsonlist(resp.data).list;
-     setState(() {
 
+  Future<void> getData()async{
+    final resp = await DioHelper.getData('api/Sliders');
+     list = OfferData.fromJsonList(resp.data).list;
+     setState(() {
      });
   }
+
 
   @override
   void initState() {
@@ -101,26 +100,36 @@ class _OffersState extends State<_Offers> {
   }
 }
 
+// {
+// "id": 2,
+// "coupon_code": "WINTER2026",
+// "discount_percent": 30,
+// "description_title1_en": "Winter Sale",
+// "description_title1_ar": "عروض الشتاء",
+// "description_title2_en": "Up to 30% off",
+// "description_title2_ar": "خصم يصل الى 30%",
+// "image_url": "https://i.pinimg.com/736x/cf/ac/00/cfac002f2ef46a83e3d7cc4cf7d66048.jpg"
+// },
 
 class OfferModel {
   late final String coupon, image, subTitle1, subTitle2;
   late final num discount;
-  late final int productId, id;
+  late final int  id;
 
   OfferModel.fromJson(Map<String, dynamic> json) {
-    coupon = json["cupon"] ?? "";
-    image = json["image"] ?? "";
-    subTitle1 = json["sub_title1"] ?? "";
-    subTitle2 = json["sub_title2"] ?? "";
-    discount = json["discound"] ?? 0;
-    productId = json["product_id"] ?? 0;
     id = json["id"] ?? 0;
+    coupon = json["coupon_code"] ?? "";
+    discount = json["discount_percent"] ?? 0;
+    subTitle1 = json["description_title1_en"] ?? "";
+    subTitle2 = json["description_title2_en"] ?? "";
+    image = json["image_url"] ?? "";
+
   }
 }
 
 class OfferData {
   late List<OfferModel> list;
-  OfferData.fromjsonlist(List<dynamic> JsonList) {
-    list = JsonList.map((e) => OfferModel.fromJson(e)).toList();
+  OfferData.fromJsonList(List<dynamic> jsonList) {
+    list = jsonList.map((e) => OfferModel.fromJson(e)).toList();
   }
 }

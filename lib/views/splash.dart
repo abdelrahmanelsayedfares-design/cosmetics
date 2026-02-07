@@ -1,7 +1,8 @@
 import 'package:cosmetics/core/logic/cash_helper.dart';
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_images.dart';
-import 'package:cosmetics/views/auth/login.dart';
+import 'package:cosmetics/views/auth/login/view.dart';
+import 'package:cosmetics/views/home/views.dart';
 import 'package:cosmetics/views/on_boarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,12 +21,13 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
 
     goTo(
-      CashHelper.isFirstTime ? OnBoardingView() : LoginView(),
+      CacheHelper.isFirstTime ? OnBoardingView() :CacheHelper.isAuth?HomeView(): LoginView(),
       canPop: false,
       delayInSeconds: 3,
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(

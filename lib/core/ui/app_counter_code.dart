@@ -1,17 +1,12 @@
 import 'dart:core';
-import 'dart:ffi';
-import 'dart:math';
-
 import 'package:cosmetics/core/logic/dio_helper.dart';
-import 'package:cosmetics/core/logic/helper_methods.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'app_images.dart';
 
 class AppCounterCode extends StatefulWidget {
   final ValueChanged<String>? onCountryCodeChanged;
+
   const AppCounterCode({super.key, this.onCountryCodeChanged});
 
   @override
@@ -19,26 +14,32 @@ class AppCounterCode extends StatefulWidget {
 }
 
 class _AppCounterCodeState extends State<AppCounterCode> {
-  late String selectedCounteryCode;
-  List<CounteryModel>? list;
+  late String selectedCountryCode;
+  late List<CountryModel> list;
 
+  @override
   initState() {
     super.initState();
     getData();
   }
 
-  Future<void> getData() async {
-    final resp = await DioHelper.getData(path: 'api/Countries');
-    if(resp.isSuccess){
-      list = CounteriesData.fromJsonList(resp.data).list;
-      selectedCounteryCode = list!.first.code;
-      widget.onCountryCodeChanged?.call(selectedCounteryCode);
-      setState(() {
+  DataState state = DataState.loading;
 
-      });
-    }else{
-      showMasg(resp.msg,isError: false);
+  Future<void> getData() async {
+    state = DataState.loading;
+    setState(() {});
+    final resp = await DioHelper.getData('api/Countries');
+
+    if (resp.isSuccess) {
+      list = CountriesData.fromJsonList(resp.data).list;
+      selectedCountryCode = list!.first.code;
+      widget.onCountryCodeChanged?.call(selectedCountryCode);
+      widget.onCountryCodeChanged?.call(selectedCountryCode);
+      state = DataState.success;
+    } else {
+      state = DataState.failed;
     }
+    setState(() {});
   }
 
   @override
@@ -54,12 +55,14 @@ class _AppCounterCodeState extends State<AppCounterCode> {
           ),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: list == null
-            ? CircularProgressIndicator()
+        child: state == DataState.failed
+            ? IconButton(onPressed: getData, icon: Icon(Icons.replay))
+            : state == DataState.loading
+            ? Center(child: CircularProgressIndicator())
             : DropdownButton(
                 dropdownColor: Color(0xffD9D9D9),
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4).r,
-                value: selectedCounteryCode,
+                value: selectedCountryCode,
                 icon: Padding(
                   padding: const EdgeInsetsDirectional.only(start: 6),
                   child: AppImage(
@@ -72,14 +75,14 @@ class _AppCounterCodeState extends State<AppCounterCode> {
                   return DropdownMenuItem(
                     value: e.code,
                     child: Text(
-                      '${e.code}',
+                      e.code,
                       style: TextStyle(color: Color(0xff434C6D)),
                     ),
                   );
                 }).toList(),
                 onChanged: (value) {
-                  selectedCounteryCode = value!;
-                  widget.onCountryCodeChanged?.call(selectedCounteryCode);
+                  selectedCountryCode = value!;
+                  widget.onCountryCodeChanged?.call(selectedCountryCode);
                   setState(() {});
                 },
               ),
@@ -88,21 +91,21 @@ class _AppCounterCodeState extends State<AppCounterCode> {
   }
 }
 
-class CounteryModel {
+class CountryModel {
   late final int id;
   late final String code, name;
 
-  CounteryModel.fromjson(Map<String, dynamic> json) {
+  CountryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? 0;
     code = json['code'] ?? '';
     name = json['name'] ?? '';
   }
 }
 
-class CounteriesData {
-  late List<CounteryModel> list;
+class CountriesData {
+  late List<CountryModel> list;
 
-  CounteriesData.fromJsonList(List<dynamic> JsonList) {
-    list = JsonList.map((e) => CounteryModel.fromjson(e)).toList();
+  CountriesData.fromJsonList(List<dynamic> jsonList) {
+    list = jsonList.map((e) => CountryModel.fromJson(e)).toList();
   }
 }

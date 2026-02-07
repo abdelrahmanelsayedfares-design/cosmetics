@@ -18,16 +18,18 @@ class _Item extends StatelessWidget {
           ),
         ),
         SizedBox(width: 12.w),
-        Text(
-          model.name,
-          style: TextStyle(
-            fontSize: 14.sp,
-            color: Color(0xff434C6D),
-            fontWeight: FontWeight.w600,
+        Expanded(
+          child: Text(
+            model.name_en,
+            style: TextStyle(
+              fontSize: 14.sp,
+              color: Color(0xff434C6D),
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
         Spacer(),
-        AppImage(image: 'forward.svg'),
+        AppImage(image: 'forward.svg',color: Color(0xff434C6D),width: 24.w,height: 24.h,),
       ],
     );
   }

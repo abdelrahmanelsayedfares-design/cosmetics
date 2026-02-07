@@ -1,12 +1,26 @@
-import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/ui/app_list_view_cart.dart';
-import '../../check_out.dart';
+import '../../../../core/logic/dio_helper.dart';
+import '../../../../core/logic/helper_methods.dart';
+import '../../../check_out.dart';
+part 'components/app_list_view_cart.dart';
 
-class MyCartPageView extends StatelessWidget {
+class MyCartPageView extends StatefulWidget {
   const MyCartPageView({super.key});
+
+  @override
+  State<MyCartPageView> createState() => _MyCartPageViewState();
+}
+
+class _MyCartPageViewState extends State<MyCartPageView> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // refresh cart
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +34,7 @@ class MyCartPageView extends StatelessWidget {
             padding: const EdgeInsets.only(right: 24).r,
             child: IconButton(
               onPressed: () {
-               goTo(CheckOutView(),canPop: true);
+                goTo(CheckOutView(), canPop: true);
               },
               icon: AppImage(image: 'shopping.svg'),
             ),
@@ -29,6 +43,7 @@ class MyCartPageView extends StatelessWidget {
       ),
 
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(8.0).r,
           child: Column(
@@ -50,3 +65,4 @@ class MyCartPageView extends StatelessWidget {
     );
   }
 }
+

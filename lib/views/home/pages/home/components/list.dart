@@ -1,8 +1,7 @@
 part of '../view.dart';
 
 class _List extends StatefulWidget {
-  final bool isTopRated;
-  const _List({super.key, this.isTopRated = true});
+  const _List({super.key,});
 
   @override
   State<_List> createState() => _ListState();
@@ -12,9 +11,7 @@ class _ListState extends State<_List> {
   List<ProductModel>? list;
 
   Future<void> getData() async {
-    final resp = await Dio().get(
-      'https://cosmatics-302b5-default-rtdb.europe-west1.firebasedatabase.app/products/${widget.isTopRated ? 'top_rated.json' : 'most_ordered.json'}',
-    );
+    final resp = await DioHelper.getData('api/Products');
     list = ProductData.fromJsonList(resp.data).list;
     setState(() {});
   }
@@ -31,7 +28,7 @@ class _ListState extends State<_List> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.isTopRated ? 'Top rated products' : 'Most ordered Products',
+          'Top rated products',
           style: TextStyle(
             fontSize: 16.sp,
             fontWeight: FontWeight.bold,
@@ -60,25 +57,26 @@ class _ListState extends State<_List> {
 
 
 class ProductModel {
-  late final String  title;
-  late  String image;
+  late final String name_en,name_ar, description_en,description_ar, image;
+  late final int id, categoryId, stock;
   late final num price;
-  late final int id;
 
   ProductModel.fromJson(Map<String, dynamic> json) {
-    image = json["image"] ?? "";
-    image = image.isEmpty
-        ? 'https://th.bing.com/th/id/OIP.l6YuPV9OOXzk8kmuwPFurwAAAA?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3'
-        : image;
-    title = json["title"] ??json['tite']?? "";
-    price = json["price"] ?? 0;
-    id = json["id"] ?? 0;
+    id = json['id'] ?? 0;
+    name_en = json['name_en'] ?? "";
+    name_ar = json['name_ar'] ?? "";
+    description_en = json['description_en'] ?? "";
+    description_ar = json['description_ar'] ?? "";
+    price = json['price'] ?? 0;
+    stock = json['stock'] ?? 0;
+    image = json['image_url'] ?? "";
+    categoryId = json['category_id'] ?? 0;
   }
 }
 
 class ProductData {
   late List<ProductModel> list;
-  ProductData.fromJsonList(List<dynamic> JsonList) {
-    list = JsonList.map((e) => ProductModel.fromJson(e)).toList();
+  ProductData.fromJsonList(List<dynamic> jsonList) {
+    list = jsonList.map((e) => ProductModel.fromJson(e)).toList();
   }
 }

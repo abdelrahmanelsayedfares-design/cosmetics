@@ -1,7 +1,7 @@
 import 'package:cosmetics/core/logic/cash_helper.dart';
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_images.dart';
-import 'package:cosmetics/views/auth/login.dart';
+import 'package:cosmetics/views/auth/login/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/ui/app_buttom.dart';
@@ -35,7 +35,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   ];
 
   void goToLogin() {
-    CashHelper.SetNotFirstTime();
+    CacheHelper.setNotFirstTime();
     goTo(LoginView(), canPop: false);
   }
 
