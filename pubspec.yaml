@@ -1,0 +1,54 @@
+name: cosmetics
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.4
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.2.1
+  google_maps_flutter: ^2.13.1
+  map_launcher: ^4.4.2
+  geolocator: ^14.0.2
+  introduction_screen: ^4.0.0
+  flutter_screenutil: ^5.9.3
+  pin_code_fields: ^8.0.1
+  lottie: ^2.3.0
+  circular_countdown_timer: ^0.2.4
+  dio: ^5.9.0
+  animate_do: ^4.2.0
+  shared_preferences: ^2.5.3
+  carousel_slider: ^5.1.1
+  flutter_bloc: ^9.1.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^6.0.0
+
+
+flutter:
+
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/looties/
+    - assets/icons/
+
+
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/montserrat.ttf
